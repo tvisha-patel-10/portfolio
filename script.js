@@ -1,80 +1,157 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for navigation and internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
 
-    // Add scroll effect to navigation header
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.background = 'var(--white)';
-            header.style.backdropFilter = 'none';
-        }
-    });
-
-    // Add click handlers for project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', function() {
+    // Project item click handlers
+    document.querySelectorAll('.project-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project');
             const projectTitle = this.querySelector('h3').textContent;
+            
             console.log('Project clicked:', projectTitle);
             
-            // You can expand this to navigate to individual project pages
-            // For example: window.location.href = `projects/${projectTitle.toLowerCase().replace(/\s+/g, '-')}.html`;
+            // Navigate to individual project page
+            // You can customize this based on your project page structure
+            // window.location.href = `projects/project-${projectId}.html`;
+            
+            // Or open in new tab
+            // window.open(`projects/project-${projectId}.html`, '_blank');
+            
+            // For now, we'll show a placeholder alert
+            showProjectModal(projectTitle);
         });
-    });
 
-    // Add hover effect for better UX feedback
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        // Add hover effect
+        item.addEventListener('mouseenter', function() {
             this.style.cursor = 'pointer';
         });
     });
 
-    // Optional: Add intersection observer for scroll animations
+    // Featured project click handler
+    document.querySelector('.project-featured').addEventListener('click', function() {
+        const projectTitle = this.querySelector('h3').textContent;
+        console.log('Featured project clicked:', projectTitle);
+        showProjectModal(projectTitle);
+    });
+
+    // Contact CTA click handler
+    document.querySelector('.contact-cta-card').addEventListener('click', function() {
+        document.querySelector('#contact').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+
+    // Add staggered animation on page load
+    function animateCards() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    }
+
+    // Run animation after a short delay
+    setTimeout(animateCards, 200);
+
+    // Intersection Observer for scroll-triggered animations
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('in-view');
             }
         });
     }, observerOptions);
 
-    // Apply fade-in animation to sections
-    document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
+    // Observe all cards for scroll animations
+    document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
     });
 
-    // Form submission handler (if you add a contact form later)
-    const contactForm = document.querySelector('#contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Handle form submission here
-            console.log('Form submitted');
+    // Dynamic grid layout adjustment
+    function adjustGridLayout() {
+        const container = document.querySelector('.grid-container');
+        const cards = document.querySelectorAll('.card');
+        
+        // Add responsive classes based on viewport
+        if (window.innerWidth < 768) {
+            container.classList.add('mobile-grid');
+        } else {
+            container.classList.remove('mobile-grid');
+        }
+    }
+
+    // Run on load and resize
+    adjustGridLayout();
+    window.addEventListener('resize', adjustGridLayout);
+
+    // Project modal placeholder function
+    function showProjectModal(projectTitle) {
+        // This is a placeholder - replace with your preferred modal/navigation method
+        alert(`Opening case study for: ${projectTitle}\n\nThis would typically navigate to a dedicated project page or open a modal with project details.`);
+        
+        // Example of what you might do instead:
+        // openProjectModal(projectTitle);
+        // or
+        // navigateToProject(projectTitle);
+    }
+
+    // Optional: Add keyboard navigation for accessibility
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+            // Ensure focus is visible on interactive elements
+            document.body.classList.add('keyboard-nav');
+        }
+    });
+
+    document.addEventListener('mousedown', function() {
+        document.body.classList.remove('keyboard-nav');
+    });
+
+    // Optional: Add parallax effect to hero card
+    function addParallaxEffect() {
+        const heroCard = document.querySelector('.hero-card');
+        const decorativeElement = document.querySelector('.decorative-element');
+        
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            if (decorativeElement) {
+                decorativeElement.style.transform = `translateY(${rate}px)`;
+            }
         });
     }
 
+    // Enable parallax on desktop only
+    if (window.innerWidth > 768) {
+        addParallaxEffect();
+    }
+
+    // Log successful initialization
+    console.log('Portfolio initialized successfully');
 });
