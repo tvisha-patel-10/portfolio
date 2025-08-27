@@ -4,116 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Product Designer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">Your Name</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Product Designer crafting <span class="highlight">meaningful experiences</span></h1>
-            <p>I design digital products that solve real problems and delight users through thoughtful research, intuitive interfaces, and strategic thinking.</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-brand">Portfolio</div>
+        <div class="nav-actions">
+            <a href="#contact" class="nav-cta">Get In Touch</a>
         </div>
-    </section>
+    </nav>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a product designer passionate about creating user-centered solutions that bridge the gap between business goals and user needs. With a background in [your background], I bring a unique perspective to every project.</p>
-                    <p>My process combines thorough research, iterative design, and collaborative problem-solving to deliver products that not only look great but perform exceptionally well in the real world.</p>
-                    <p>When I'm not designing, you can find me [personal interests/hobbies].</p>
-                </div>
-                <div class="about-image">
-                    Your Photo Here
-                </div>
+    <!-- Main Grid Container -->
+    <div class="grid-container">
+        
+        <!-- Hero Card -->
+        <div class="card hero-card">
+            <div class="decorative-element">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="currentColor" stroke-width="1"/>
+                    <circle cx="30" cy="30" r="15" fill="none" stroke="currentColor" stroke-width="1"/>
+                    <circle cx="30" cy="30" r="5" fill="currentColor"/>
+                </svg>
+            </div>
+            <h1 class="hero-title">Let's create <span class="italic">meaningful</span> experiences for your users</h1>
+        </div>
+
+        <!-- Profile Image Card -->
+        <div class="card profile-card">
+            <div class="profile-image">
+                <img src="images/your-photo.jpg" alt="Your Name" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="profile-placeholder">Your Photo</div>
             </div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">Project Screenshot</div>
-                    <div class="project-content">
-                        <h3>Project Name 1</h3>
-                        <p>Brief description of the project, the problem it solved, and your role in the solution.</p>
-                        <div class="project-tags">
-                            <span class="tag">UX Research</span>
-                            <span class="tag">UI Design</span>
-                            <span class="tag">Prototyping</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">Project Screenshot</div>
-                    <div class="project-content">
-                        <h3>Project Name 2</h3>
-                        <p>Brief description of the project, the problem it solved, and your role in the solution.</p>
-                        <div class="project-tags">
-                            <span class="tag">Product Strategy</span>
-                            <span class="tag">User Testing</span>
-                            <span class="tag">Design Systems</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">Project Screenshot</div>
-                    <div class="project-content">
-                        <h3>Project Name 3</h3>
-                        <p>Brief description of the project, the problem it solved, and your role in the solution.</p>
-                        <div class="project-tags">
-                            <span class="tag">Mobile Design</span>
-                            <span class="tag">Accessibility</span>
-                            <span class="tag">Animation</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- Featured Project Card -->
+        <div class="card project-featured" data-project="featured">
+            <div class="project-image">
+                <img src="images/featured-project.jpg" alt="Featured Project" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="project-placeholder">Featured Project</div>
+            </div>
+            <div class="project-overlay">
+                <h3>Project Spotlight</h3>
+                <div class="project-arrow">↗</div>
             </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Work Together</h2>
+        <!-- About Card -->
+        <div class="card about-card">
+            <div class="about-icon">
+                <svg width="40" height="40" viewBox="0 0 40 40">
+                    <rect width="40" height="40" rx="8" fill="currentColor" opacity="0.1"/>
+                    <path d="M20 12v16M12 20h16" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <p>I'm a product designer passionate about crafting user-centered solutions that bridge business goals with human needs. Based in [Location], I specialize in UX research, interface design, and design systems.</p>
+        </div>
+
+        <!-- Contact CTA Card -->
+        <div class="card contact-cta-card">
             <div class="contact-content">
-                <p>I'm always interested in new opportunities and collaborations. Whether you have a project in mind or just want to chat about design, I'd love to hear from you!</p>
-                <div class="contact-buttons">
-                    <a href="mailto:your.email@example.com" class="contact-button">Email Me</a>
-                    <a href="https://linkedin.com/in/yourprofile" class="contact-button accent">LinkedIn</a>
-                    <a href="/resume.pdf" class="contact-button">Resume</a>
-                </div>
+                <span class="contact-label">Have a project in mind?</span>
+                <div class="contact-arrow">↗</div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Your Name. Designed and coded with care.</p>
+        <!-- Projects List Card -->
+        <div class="card projects-list-card">
+            <h2 class="projects-title">Selected Work</h2>
+            
+            <div class="project-item" data-project="1">
+                <div class="project-info">
+                    <h3>E-commerce Redesign</h3>
+                    <span class="project-type">UX/UI • 2024</span>
+                </div>
+                <div class="project-action">View Case Study</div>
+            </div>
+
+            <div class="project-item" data-project="2">
+                <div class="project-info">
+                    <h3>Mobile Banking App</h3>
+                    <span class="project-type">Product Design • 2024</span>
+                </div>
+                <div class="project-action">View Case Study</div>
+            </div>
+
+            <div class="project-item" data-project="3">
+                <div class="project-info">
+                    <h3>Design System</h3>
+                    <span class="project-type">Systems • 2023</span>
+                </div>
+                <div class="project-action">View Case Study</div>
+            </div>
+
+            <div class="project-item" data-project="4">
+                <div class="project-info">
+                    <h3>SaaS Dashboard</h3>
+                    <span class="project-type">B2B UX • 2023</span>
+                </div>
+                <div class="project-action">View Case Study</div>
+            </div>
+
+            <div class="project-item" data-project="5">
+                <div class="project-info">
+                    <h3>Healthcare Portal</h3>
+                    <span class="project-type">Service Design • 2023</span>
+                </div>
+                <div class="project-action">View Case Study</div>
+            </div>
         </div>
-    </footer>
+
+        <!-- Skills/Services Card -->
+        <div class="card skills-card">
+            <h3>What I Do</h3>
+            <ul class="skills-list">
+                <li>User Research</li>
+                <li>Interface Design</li>
+                <li>Prototyping</li>
+                <li>Design Systems</li>
+                <li>Usability Testing</li>
+            </ul>
+        </div>
+
+        <!-- Contact Info Card -->
+        <div class="card contact-info-card" id="contact">
+            <h2 class="contact-title">Contact <span class="italic">me</span></h2>
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com" class="contact-link">EMAIL</a>
+                <a href="https://linkedin.com/in/yourprofile" class="contact-link">LINKEDIN</a>
+                <a href="/resume.pdf" class="contact-link">RESUME</a>
+            </div>
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 </body>
