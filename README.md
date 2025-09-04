@@ -1,3 +1,3 @@
-# portfolio
-Showcasing my projects crafting intuitive user flows, accessible platforms, and seamless experiences by applying product strategy and psychological principles.
->>>>>>> 060585d (Initial commit)
+# Tvisha Patel's Product Design Portfolio
+I craft intuitive user flows, optimized conversion funnels, and seamless experiences by applying product strategy and psychological principles.
+>>>>>>> 7cd86c2 (Update README.md)
